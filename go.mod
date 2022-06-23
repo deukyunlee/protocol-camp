@@ -1,4 +1,4 @@
-module github.com/lecture
+module github.com/deukyunlee/protocol-camp
 
 go 1.18
 
