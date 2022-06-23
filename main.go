@@ -16,7 +16,7 @@ func main(){
 		fmt.Fprintf(w, "Hi")
 	})
 
-	log.Fatal(http.ListenAndServe(":8001", nil))
+	log.Fatal(http.ListenAndServe(":3000", nil))
 
 }
 
