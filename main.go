@@ -1,30 +1,23 @@
 package main
 
 import (
-	"github.com/deukyunlee/protocol-camp/user"
-	"github.com/gofiber/fiber/v2"
+	"fmt"
+	"html"
+	"log"
+	"net/http"
 )
 
-func hello(c *fiber.Ctx) error {
-	return c.SendString("Welcome to Project!!")
+func main(){
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+	})
+
+	http.HandleFunc("/hi", func(w http.ResponseWriter, r *http.Request){
+		fmt.Fprintf(w, "Hi")
+	})
+
+	log.Fatal(http.ListenAndServe(":3000", nil))
+
 }
 
-func Routers(app *fiber.App) {
-	app.Get("/users", user.GetUsers)
-	// app.Get("/", user.GetUsers2)
-	app.Get("/user/:id", user.GetUser)
-	// app.Get("/usertest/:id", user.GetUser2)
-	app.Post("/user", user.SaveUser)
-	app.Delete("/user/:id", user.DeleteUser)
-	app.Put("/user/:id", user.UpdateUser)
-}
-
-func main() {
-	// result := test.Test_plus(3,5)
-	// fmt.Println(result)
-	user.InitialMigration()
-	app := fiber.New()
-	app.Get("/", hello)
-	Routers(app)
-	app.Listen(":3000")
-}
+//docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
