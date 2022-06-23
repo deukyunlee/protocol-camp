@@ -6,14 +6,12 @@ import (
 )
 
 func hello(c *fiber.Ctx) error {
-	return c.SendString("Welcome to Project!!")
+	return c.SendString("Welcome to Protocol Camp!")
 }
 
 func Routers(app *fiber.App) {
 	app.Get("/users", user.GetUsers)
-	// app.Get("/", user.GetUsers2)
 	app.Get("/user/:id", user.GetUser)
-	// app.Get("/usertest/:id", user.GetUser2)
 	app.Post("/user", user.SaveUser)
 	app.Delete("/user/:id", user.DeleteUser)
 	app.Put("/user/:id", user.UpdateUser)
