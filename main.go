@@ -11,6 +11,7 @@ func hello(c *fiber.Ctx) error {
 
 func Routers(app *fiber.App) {
 	app.Get("/users", user.GetUsers)
+	// app.Get("/", user.GetUsers2)
 	app.Get("/user/:id", user.GetUser)
 	// app.Get("/usertest/:id", user.GetUser2)
 	app.Post("/user", user.SaveUser)

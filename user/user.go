@@ -35,6 +35,11 @@ func GetUsers(c *fiber.Ctx) error {
 	return c.JSON(&users)
 }
 
+func GetUsers2(c *fiber.Ctx) error {
+	// var users []User
+	// DB.Find(&users)
+	return c.JSON("hi")
+}
 func GetUser(c *fiber.Ctx) error {
 	id := c.Params("id")
 	var user User
